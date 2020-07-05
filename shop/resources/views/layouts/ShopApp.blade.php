@@ -5,7 +5,7 @@
     <body>
         <header>
             <h1>@yield('title')</h1>
-            <a href="#" class="cage">購入ページへ</a>    
+            @yield('header')    
         </header>
         <div class="content">
             @yield('content')
