@@ -2,11 +2,16 @@
 
 @section('title', 'Shopping!')
 
+@section('header')
+    @parent
+    <a href="/shop/mypage" class="cage">購入ページへ</a>
+@endsection    
+
 @section('content')
     <p>商品一覧</p>
     @foreach($items as $item)
         <ul>
-        <li>{{$item->getData()}}</li>
+        <li><a href="/shop/buy?id={{$item->id}}" >{{$item->getData()}}</a></li>
         </ul>
     @endforeach
 @endsection
