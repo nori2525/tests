@@ -8,8 +8,8 @@ class Purchase extends Model
 {
     //
     public function getSum(){
-        $items = Purchase::all();
         $sum = 0;
+        $items = Purchase::all();
         foreach($items as $item){
             $sum += $item['price'];
         }

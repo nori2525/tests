@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::get('/shop', 'ShopController@index');
 Route::get('/shop/buy', 'ShopController@buy');
 Route::get('/shop/mypage', 'ShopController@myPage');
+Route::get('/shop/thk', 'ShopController@thk');
 
 Auth::routes();
 
