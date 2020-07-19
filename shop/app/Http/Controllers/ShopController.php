@@ -9,6 +9,7 @@ use App\Purchase;
 class ShopController extends Controller
 {
     //
+
     public function index(Request $request){
         $items = Product::all();
         return view('Shop.index', ['items' => $items]);
@@ -26,6 +27,22 @@ class ShopController extends Controller
 
     public function myPage(Request $request){
         $items = Purchase::all();
-        return view('Shop.mypage', ['items' => $items]);
+        if($items->isEmpty()){
+            return view('Shop.mypage', ['items' => $items, 'sum' => 0]);
+        }else{
+            $sum = $items[0]->getSum();
+            return view('Shop.mypage', ['items' => $items, 'sum' => $sum]);
+        }
+    }
+
+    public function thk(){
+        $items = Purchase::all();
+        if($items->isEmpty()){
+            $error = '商品が選択されていません';
+            return redirect('/shop/mypage')->with('error', '商品が選択されていません');
+        }else{
+            Purchase::query()->delete();
+            return view('Shop.thk');
+        }
     }
 }
