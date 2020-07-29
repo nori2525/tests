@@ -5,6 +5,7 @@
 @section('header')
     @parent
     <a href="/shop/mypage" class="cage">購入ページへ</a>
+    <a href="/shop/add" >商品を追加する</a>
 @endsection    
 
 @section('content')
