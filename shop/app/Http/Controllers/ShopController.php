@@ -38,11 +38,21 @@ class ShopController extends Controller
     public function thk(){
         $items = Purchase::all();
         if($items->isEmpty()){
-            $error = '商品が選択されていません';
             return redirect('/shop/mypage')->with('error', '商品が選択されていません');
         }else{
             Purchase::query()->delete();
             return view('Shop.thk');
         }
+    }
+    public function add(Request $request){
+        return view('/Shop.add');
+    }
+    public function create(Request $request){
+        $this->validate($request, Product::$rules);
+        $item = new Product;
+        $form = $request->all();
+        unset($form['_token']);
+        $item->fill($form)->save();
+        return redirect('/shop/add')->with('sen', '商品が追加されました。');
     }
 }

@@ -21,6 +21,8 @@ Route::get('/shop', 'ShopController@index');
 Route::get('/shop/buy', 'ShopController@buy');
 Route::get('/shop/mypage', 'ShopController@myPage');
 Route::get('/shop/thk', 'ShopController@thk');
+Route::get('/shop/add', 'ShopController@add');
+Route::post('/shop/add', 'ShopController@create');
 
 Auth::routes();
 
